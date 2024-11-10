@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
-import 'package:my_chatiy/views/chat_with_bot.dart';
+import 'package:my_chatiy/views/main%20screen/chat_with_bot.dart';
 
 class ParentCard{
    
