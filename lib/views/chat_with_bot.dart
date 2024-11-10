@@ -8,20 +8,20 @@ class ChatWithBot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade700,
+      backgroundColor:const Color(0xff171717),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: const Text(
           'MYChatiy 👋',
           style:
-              TextStyle(fontSize: 25, color: Colors.black, letterSpacing: 1.2),
+              TextStyle(fontSize: 25, color: Colors.pinkAccent, letterSpacing: 1.2),
         ),
         actions: [
           IconButton(
               onPressed: () => Get.back(),
               icon:
-                  const Icon(Icons.home_filled, color: Colors.black, size: 22))
+                  const Icon(Icons.home_filled, color: Colors.white, size: 23))
         ],
       ),
       drawer: customDrawer(context),
@@ -31,29 +31,30 @@ class ChatWithBot extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+           
             Center(
               child: TextField(
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 73, 68, 68),
+                    constraints: BoxConstraints(minWidth: 280),
+                    contentPadding: EdgeInsets.all(20),
                     suffixIcon: Icon(
-                      Icons.telegram_sharp,
+                      Icons.arrow_drop_up_sharp,
                       color: Colors.white,
                       size: 35,
                     ),
-                    contentPadding: EdgeInsets.all(20),
                     border: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
-                    filled: true,
-                    fillColor: Color(0xff171717),
-                    constraints: BoxConstraints(minWidth: 280)),
+                        borderRadius: BorderRadius.all(Radius.circular(12))
+                        ),
+                )
               ),
             ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              '   MYChatiy Nov 24 Version. Free Research Preview.',
+
+            SizedBox(height: 8),
+            Text('   MYChatiy Nov 24 Version. Free Research Preview.',
               style: TextStyle(fontSize: 7, color: Colors.white),
             ),
           ],

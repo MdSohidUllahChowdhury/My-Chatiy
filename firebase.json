@@ -1,0 +1,23 @@
+{
+	"flutter": {
+		"platforms": {
+			"android": {
+				"default": {
+					"projectId": "mychatiy-app",
+					"appId": "1:405440461939:android:ef29f275d4bd8197c97e06",
+					"fileOutput": "android/app/google-services.json"
+				}
+			},
+			"dart": {
+				"lib/firebase_options.dart": {
+					"projectId": "mychatiy-app",
+					"configurations": {
+						"android": "1:405440461939:android:ef29f275d4bd8197c97e06",
+						"ios": "1:405440461939:ios:c3e3d0a8ef6dc382c97e06",
+						"web": "1:405440461939:web:d3ff2b1ed7f300fac97e06"
+					}
+				}
+			}
+		}
+	}
+}

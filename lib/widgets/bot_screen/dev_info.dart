@@ -18,7 +18,7 @@ Widget devInfo(BuildContext context) {
                 borderRadius: BorderRadius.all(Radius.circular(16))),
             child: const Row(
               children: [
-                SizedBox(width: 40),
+                SizedBox(width:25),
                 CircleAvatar(
                   radius: 22,
                   backgroundImage: AssetImage('lib/assets/images/git.png'),
@@ -26,7 +26,7 @@ Widget devInfo(BuildContext context) {
                 SizedBox(width: 30),
                 Expanded(
                     child: Text('GitHub Profile',
-                        style: TextStyle(fontSize: 16, color: Colors.white))),
+                        style: TextStyle(fontSize: 14, color: Colors.white))),
               ],
             ),
           ),
@@ -52,7 +52,7 @@ Widget devInfo(BuildContext context) {
                 borderRadius: BorderRadius.all(Radius.circular(16))),
             child: const Row(
               children: [
-                SizedBox(width: 40),
+                SizedBox(width: 25),
                 CircleAvatar(
                   radius: 22,
                   backgroundImage: AssetImage('lib/assets/images/in.png'),
@@ -60,7 +60,7 @@ Widget devInfo(BuildContext context) {
                 SizedBox(width: 30),
                 Expanded(
                     child: Text('LinkedIn Profile',
-                        style: TextStyle(fontSize: 16, color: Colors.white))),
+                        style: TextStyle(fontSize: 14, color: Colors.white))),
               ],
             ),
           ),
@@ -86,7 +86,7 @@ Widget devInfo(BuildContext context) {
                 borderRadius: BorderRadius.all(Radius.circular(16))),
             child: const Row(
               children: [
-                SizedBox(width: 40),
+                SizedBox(width: 25),
                 CircleAvatar(
                   radius: 22,
                   backgroundImage: AssetImage('lib/assets/images/fb.png'),
@@ -94,7 +94,7 @@ Widget devInfo(BuildContext context) {
                 SizedBox(width: 30),
                 Expanded(
                     child: Text('Facebook Profile',
-                        style: TextStyle(fontSize: 16, color: Colors.white))),
+                        style: TextStyle(fontSize:14, color: Colors.white))),
               ],
             ),
           )
