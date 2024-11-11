@@ -4,15 +4,16 @@ class FormSection extends StatelessWidget {
   final String nameit;
   final bool? ispassword;
   final bool? isMust;
-  
+  final TextEditingController? authControler;
   const FormSection({super.key, 
   
-  required this.nameit, 
+  required this.nameit,
+  this.authControler, 
    this.ispassword, 
    this.isMust});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 18,
@@ -20,7 +21,7 @@ class FormSection extends StatelessWidget {
         ),
       
       child: TextFormField(
-        
+        controller:authControler,
         validator: isMust == true ? (String? value) 
         {
           if(value == null || value.isEmpty){
