@@ -10,11 +10,10 @@ class SingUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _formkey = GlobalKey<FormState>();
-    FirebaseAuth auth = FirebaseAuth.instance;
+    final formkey = GlobalKey<FormState>();
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    FirebaseAuth auth = FirebaseAuth.instance;
 
     return Scaffold(
         backgroundColor: Colors.black,
@@ -45,7 +44,7 @@ class SingUp extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Form(
-                  key: _formkey,
+                  key: formkey,
                   child: Column(
                     children: [
                       const FormSection(
@@ -73,7 +72,7 @@ class SingUp extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                           onPressed: () async{
-                            if (_formkey.currentState!.validate()) {
+                            if (formkey.currentState!.validate()) {
                               
                             try {
                               await auth.createUserWithEmailAndPassword(
@@ -83,10 +82,7 @@ class SingUp extends StatelessWidget {
                             }catch(error){
                               TostMessage().errorMessage(error.toString());
                             }
-                                  
-
-                              // Get.offAll(() => const LogIn());
-                            }
+                          }
                           },
                           style: TextButton.styleFrom(
                               minimumSize: const Size(260, 50),

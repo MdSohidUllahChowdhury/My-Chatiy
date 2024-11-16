@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:my_chatiy/views/intro%20screen/welcome_screen.dart';
+import 'package:my_chatiy/views/main%20screen/bot_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,13 +15,21 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    _splash();
+    splashFunction();
     super.initState();
   }
 
-  _splash() async {
-    await Future.delayed(const Duration(seconds: 4), () {});
+  splashFunction() async {
+    final auth = FirebaseAuth.instance;
+    final user = auth.currentUser;
+    if(user!=null){
+     await Future.delayed(const Duration(seconds: 4), () {});
+    Get.to(() => const BotScreen());
+    }else{
+     await Future.delayed(const Duration(seconds: 4), () {});
     Get.to(() => const WelcomeScreen());
+    }
+     
   }
 
   @override
@@ -27,11 +37,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Animate(
-        child: Center(
-            child: Image.asset(
-          'lib/assets/images/appLogo.png',
-          height: 260,
-        )),
+        child:const Center(
+          child:CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 150,
+                child: CircleAvatar(
+                  radius: 140,
+                  backgroundImage: AssetImage('lib/assets/images/appLogo.png'),
+                ),
+              ),
+        ), 
       )
           .animate()
           .flipH()

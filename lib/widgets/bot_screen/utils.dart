@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:my_chatiy/views/main%20screen/chat_with_bot.dart';
+import 'package:my_chatiy/views/main%20screen/search_by_image.dart';
 
 class ParentCard{
    
@@ -110,7 +111,8 @@ class ParentCard{
                 children: [
                   ListTile(
                      onTap: (){
-                      Get.snackbar('Currently Text Chat is Open', '');
+                     // Get.snackbar('Currently Text Chat is Open', '');
+                     Get.to(()=>const SearchByImage());
                     },
                       leading: CircleAvatar(
                         backgroundColor: Colors.grey.shade800,

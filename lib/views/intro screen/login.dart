@@ -11,11 +11,10 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _formkey = GlobalKey<FormState>();
-    final auth = FirebaseAuth.instance;
+    final formkey = GlobalKey<FormState>();
     TextEditingController email = TextEditingController();
     TextEditingController password = TextEditingController();
+    final auth = FirebaseAuth.instance;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -44,7 +43,7 @@ class LogIn extends StatelessWidget {
             ),
           const SizedBox(height: 12),
           Form(
-              key: _formkey,
+              key: formkey,
               child: Column(
                 children: [
                    FormSection(
@@ -64,7 +63,7 @@ class LogIn extends StatelessWidget {
                   const SizedBox(height: 25),
                   ElevatedButton(
                       onPressed: () async{
-                        if (_formkey.currentState!.validate()){
+                        if (formkey.currentState!.validate()){
                           try{
                           await auth.signInWithEmailAndPassword(
                             email: email.text.trim(), 

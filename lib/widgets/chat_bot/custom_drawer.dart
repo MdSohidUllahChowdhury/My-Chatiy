@@ -1,14 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_chatiy/views/intro%20screen/login.dart';
 
 Widget customDrawer(BuildContext context) {
+  final auth = FirebaseAuth.instance;
   return Drawer(
     backgroundColor: const Color(0xff171717),
     width: MediaQuery.sizeOf(context).width * 0.7,
     elevation: 5,
-    child: const Column(
+    child:  Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        DrawerHeader(
+        const DrawerHeader(
           child: Center(
             child: TextField(
               style: TextStyle(color: Colors.white),
@@ -32,7 +36,7 @@ Widget customDrawer(BuildContext context) {
         ),
         Column(
           children: [
-            ListTile(
+            const ListTile(
               leading: Icon(
                 Icons.delete_outline,
                 color: Colors.white,
@@ -42,7 +46,7 @@ Widget customDrawer(BuildContext context) {
                 style: TextStyle(fontSize: 12, color: Colors.white),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 Icons.person_outline_outlined,
                 color: Colors.white,
@@ -52,7 +56,7 @@ Widget customDrawer(BuildContext context) {
                 style: TextStyle(fontSize: 12, color: Colors.white),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 Icons.dark_mode_outlined,
                 color: Colors.white,
@@ -62,7 +66,7 @@ Widget customDrawer(BuildContext context) {
                 style: TextStyle(fontSize: 12, color: Colors.white),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 Icons.format_quote_sharp,
                 color: Colors.white,
@@ -73,13 +77,19 @@ Widget customDrawer(BuildContext context) {
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.logout_outlined,
                 color: Colors.white,
               ),
-              title: Text(
-                'Log Out ',
-                style: TextStyle(fontSize: 12, color: Colors.white),
+              title: InkWell(
+                onTap: () async{
+                 await auth.signOut()
+                 .then((value) => Get.offAll(()=>const LogIn()));
+                },
+                child: const Text(
+                  'Log Out ',
+                  style: TextStyle(fontSize: 12, color: Colors.white),
+                ),
               ),
             ),
           ],
