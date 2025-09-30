@@ -26,6 +26,7 @@ class ChatWithBot extends StatelessWidget {
       ),
       drawer: customDrawer(context),
       body: Container(
+        padding: const EdgeInsets.symmetric(vertical: 15,horizontal:6),
         margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.end,

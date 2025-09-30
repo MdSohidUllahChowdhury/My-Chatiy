@@ -15,33 +15,36 @@ class ParentCard{
                 decoration: const BoxDecoration(
                     color: Color(0xffC6F432),
                     borderRadius: BorderRadius.all(Radius.circular(24))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListTile(
-                      onTap: (){
-                        Get.snackbar('Currently Text Chat is Open', '');
-                      },
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.grey.shade800,
-                          radius: 20,
-                          child: const Icon(
-                            Icons.mic,
-                            color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        onTap: (){
+                          Get.snackbar('Currently Text Chat is Open','Voice Feature Will be Add Soon',backgroundColor: const Color(0xffC6F432));
+                        },
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.grey.shade800,
+                            radius: 20,
+                            child: const Icon(
+                              Icons.mic,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_outward,
-                          size: 28,
-                        )),
-                    const Text(' TALK\n WITH\n BOT',
-                      style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          decorationThickness: 1.2),
-                    )
-                  ],
+                          trailing: const Icon(
+                            Icons.arrow_outward,
+                            size: 28,
+                          )),
+                      const Text(' TALK\n WITH\n BOT',
+                        style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            decorationThickness: 1.2),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ).animate().flip(

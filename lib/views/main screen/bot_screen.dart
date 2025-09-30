@@ -13,6 +13,16 @@ class BotScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon:  const Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 24,
+            ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         title: const Text(
           'MYChatiy 👋',
           style: TextStyle(
@@ -41,12 +51,13 @@ class BotScreen extends StatelessWidget {
           const Text(' Developer Information',
             style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.w100,
                 color: Colors.white,
-                fontFamily: '',
-                letterSpacing: 1.2),
+                letterSpacing: 1.4),
           ),
-          devInfo(context)
-          
+          const SizedBox(height: 12),
+          devInfo(context),
+          const SizedBox(height: 15)
           ]
         ),
       ),

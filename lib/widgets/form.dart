@@ -16,8 +16,8 @@ class FormSection extends StatelessWidget {
   Widget build(BuildContext context)  {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 18,
-        vertical: 8
+        horizontal: 20,
+        vertical: 2
         ),
       
       child: TextFormField(
@@ -38,8 +38,9 @@ class FormSection extends StatelessWidget {
             hintStyle:const TextStyle(color: Colors.black),
             fillColor: Colors.white,
             labelText:nameit,
+            labelStyle: const TextStyle(fontSize:10,fontWeight: FontWeight.w100),
             border: OutlineInputBorder(
-              borderRadius:BorderRadius.circular(24),
+              borderRadius:BorderRadius.circular(14),
               borderSide: BorderSide.none,
             ),
             

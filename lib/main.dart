@@ -12,7 +12,7 @@ void main() async {
     );
 
   runApp(ScreenUtilInit(
-    designSize: const Size(375, 725),
+    designSize: const Size(360, 670),
     child: (GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Lato', useMaterial3: true),

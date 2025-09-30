@@ -39,7 +39,7 @@ Widget devInfo(BuildContext context) {
       ),
     ),
     Link(
-      uri: Uri.parse('https://www.linkedin.com/in/sohid-chowdhury/'),
+      uri: Uri.parse('https://www.linkedin.com/in/md-sohid-ullah-chowdhury/'),
       builder: (context, followLink) => InkWell(
         onTap: followLink,
         child: Animate(
