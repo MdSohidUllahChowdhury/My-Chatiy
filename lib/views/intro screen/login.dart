@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_chatiy/views/intro%20screen/singup.dart';
-import 'package:my_chatiy/views/main%20screen/bot_screen.dart';
+import 'package:my_chatiy/views/main%20screen/home_screen.dart';
 import 'package:my_chatiy/widgets/form.dart';
 import 'package:my_chatiy/widgets/tost.dart';
 

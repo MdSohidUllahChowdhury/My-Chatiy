@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_chatiy/widgets/bot_screen/utils.dart';
+import 'package:my_chatiy/widgets/utils.dart';
 
 Widget threeCard(BuildContext context) {
   return SingleChildScrollView(
@@ -8,13 +8,13 @@ Widget threeCard(BuildContext context) {
       children: [
         Column(
           children: [
-            ParentCard().oneCard(context),
+            ParentCard().voiceCard(context),
           ],
         ),
         Column(
           children: [
-            ParentCard().twoCard(context),
-            ParentCard().threeCard(context)
+            ParentCard().chatCard(context),
+            ParentCard().imageCard(context)
           ],
         ),
       ],

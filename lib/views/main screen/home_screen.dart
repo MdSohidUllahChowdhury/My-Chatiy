@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_chatiy/widgets/bot_screen/dev_info.dart';
-import 'package:my_chatiy/widgets/bot_screen/three_card.dart';
-import 'package:my_chatiy/widgets/chat_bot/custom_drawer.dart';
+import 'package:get/get.dart';
+import 'package:my_chatiy/views/main%20screen/profile.dart';
+import 'package:my_chatiy/widgets/dev_info.dart';
+import 'package:my_chatiy/widgets/three_card.dart';
+import 'package:my_chatiy/widgets/custom_drawer.dart';
 
 class BotScreen extends StatelessWidget {
   const BotScreen({super.key});
@@ -15,7 +17,7 @@ class BotScreen extends StatelessWidget {
         centerTitle: true,
         leading: Builder(
           builder: (context) => IconButton(
-            icon:  const Icon(
+            icon: const Icon(
               Icons.menu,
               color: Colors.white,
               size: 24,
@@ -28,17 +30,30 @@ class BotScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 25, color: Colors.pinkAccent, letterSpacing: 1.2),
         ),
+        actions: [
+          CircleAvatar(
+            backgroundColor: Colors.deepOrangeAccent,
+            radius: 17,
+            child: IconButton(
+                onPressed: () {
+                  Get.to(()=>const ProfileFormScreen());
+                },
+                icon: const Icon(
+                  Icons.person,
+                  color: Colors.white,
+                  size: 17,
+                )),
+          ),
+          const SizedBox(width: 6,)
+        ],
       ),
       drawer: customDrawer(context),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal:6, vertical: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, 
-          children: [
-        
-          const SizedBox(height:30),
+        margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 20),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 30),
           const Text('Get Your Answer\nChatiy is Here for Help',
-          style: TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w300,
                 letterSpacing: 1.2,
                 color: Colors.white,
@@ -47,10 +62,11 @@ class BotScreen extends StatelessWidget {
               )),
           const SizedBox(height: 30),
           threeCard(context),
-          const Expanded(child:SizedBox(height: 20)),
-          const Text(' Developer Information',
+          const Expanded(child: SizedBox(height: 20)),
+          const Text(
+            ' Developer Information',
             style: TextStyle(
-                fontSize: 18,
+                fontSize: 13,
                 fontWeight: FontWeight.w100,
                 color: Colors.white,
                 letterSpacing: 1.4),
@@ -58,8 +74,7 @@ class BotScreen extends StatelessWidget {
           const SizedBox(height: 12),
           devInfo(context),
           const SizedBox(height: 15)
-          ]
-        ),
+        ]),
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:my_chatiy/views/intro%20screen/welcome_screen.dart';
-import 'package:my_chatiy/views/main%20screen/bot_screen.dart';
+import 'package:my_chatiy/views/main%20screen/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
