@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_chatiy/firebase/database.dart';
 import 'package:my_chatiy/views/intro%20screen/login.dart';
 import 'package:my_chatiy/widgets/form.dart';
 import 'package:my_chatiy/widgets/tost.dart';
@@ -10,10 +11,27 @@ class SingUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
     final formkey = GlobalKey<FormState>();
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    FirebaseAuth auth = FirebaseAuth.instance;
+    final firstName = TextEditingController();
+    final lastName = TextEditingController();
+
+    Future<void> userInfoToDataBase() async {
+      Map<String, dynamic> userDetails = {
+        "First Name": firstName.text,
+        "Last Name": lastName.text,
+        "Email": emailController.text,
+      };
+      //String id = randomAlphaNumeric(10);
+      final User? user = FirebaseAuth.instance.currentUser;
+      await CallDataBase().singUpUserInfo(userDetails, user!.uid);
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Successfully Signed Up")),
+      );
+    }
 
     return Scaffold(
         backgroundColor: Colors.black,
@@ -36,9 +54,9 @@ class SingUp extends StatelessWidget {
               const SizedBox(height: 12),
               const CircleAvatar(
                 backgroundColor: Colors.white,
-                radius: 140,
+                radius: 100,
                 child: CircleAvatar(
-                  radius: 130,
+                  radius: 96,
                   backgroundImage: AssetImage('lib/assets/images/appLogo.png'),
                 ),
               ),
@@ -47,14 +65,16 @@ class SingUp extends StatelessWidget {
                   key: formkey,
                   child: Column(
                     children: [
-                      const FormSection(
+                      FormSection(
                         nameit: 'Frist Name',
                         isMust: true,
+                        authControler: firstName,
                       ),
                       const SizedBox(height: 4),
-                      const FormSection(
+                      FormSection(
                         nameit: 'Last Name',
                         isMust: true,
+                        authControler: lastName,
                       ),
                       const SizedBox(height: 4),
                       FormSection(
@@ -71,18 +91,20 @@ class SingUp extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             if (formkey.currentState!.validate()) {
-                              
-                            try {
-                              await auth.createUserWithEmailAndPassword(
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim());
-                                   Get.offAll(() => const LogIn());
-                            }catch(error){
-                              TostMessage().errorMessage(error.toString());
+                              try {
+                                await auth.createUserWithEmailAndPassword(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim());
+                                // save additional user info to Firestore
+                                await userInfoToDataBase();
+                                // navigate to login screen
+                                Get.offAll(() => const LogIn());
+                              } catch (error) {
+                                TostMessage().errorMessage(error.toString());
+                              }
                             }
-                          }
                           },
                           style: TextButton.styleFrom(
                               minimumSize: const Size(260, 50),
@@ -106,7 +128,8 @@ class SingUp extends StatelessWidget {
                     onPressed: () => Get.to(() => const LogIn()),
                     child: const Text(
                       "LogIn",
-                      style: TextStyle(fontSize: 10),
+                      style:
+                          TextStyle(fontSize: 12, color: Colors.orangeAccent),
                     ),
                   ),
                 ],

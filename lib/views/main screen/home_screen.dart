@@ -31,12 +31,13 @@ class BotScreen extends StatelessWidget {
               fontSize: 25, color: Colors.pinkAccent, letterSpacing: 1.2),
         ),
         actions: [
+        
           CircleAvatar(
-            backgroundColor: Colors.deepOrangeAccent,
+            backgroundColor: Colors.blueAccent,
             radius: 17,
             child: IconButton(
                 onPressed: () {
-                  Get.to(()=>const ProfileFormScreen());
+                  Get.to(() => const UserInfoScreen());
                 },
                 icon: const Icon(
                   Icons.person,
@@ -44,7 +45,9 @@ class BotScreen extends StatelessWidget {
                   size: 17,
                 )),
           ),
-          const SizedBox(width: 6,)
+          const SizedBox(
+            width: 6,
+          )
         ],
       ),
       drawer: customDrawer(context),

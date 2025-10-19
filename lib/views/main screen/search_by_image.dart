@@ -9,7 +9,6 @@ class SearchByImage extends StatefulWidget {
 
 final TextEditingController teamRankControler = TextEditingController();
 final TextEditingController teamNameControler = TextEditingController();
-
 pickImageFromGallery() {}
 
 class _SearchByImageState extends State<SearchByImage> {

@@ -1,10 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CallDataBase {
-  Future teamRank(Map<String, dynamic> teamRankAndName, String id) async {
+  Future singUpUserInfo(Map<String, dynamic> userInfo, String id) async {
     return await FirebaseFirestore.instance
-        .collection('ICC ODI RANK')
+        .collection('User Sing Up Info')
         .doc(id)
-        .set(teamRankAndName);
+        .set(userInfo);
+  }
+
+  Future<Stream<QuerySnapshot>> snap() async {
+    return await FirebaseFirestore.instance
+        .collection('User Sing Up Info')
+        .snapshots();
   }
 }

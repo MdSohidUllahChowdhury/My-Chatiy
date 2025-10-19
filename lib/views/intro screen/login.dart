@@ -96,7 +96,7 @@ class LogIn extends StatelessWidget {
             onPressed: () => Get.to(() => const SingUp()),
             child: const Text(
               "SingUp",
-              style: TextStyle(fontSize: 10),
+              style: TextStyle(fontSize: 12,color: Colors.blueAccent),
             ),
           ),
         ]));
