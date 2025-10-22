@@ -15,10 +15,8 @@ Widget devInfo(BuildContext context) {
           ),
         )
             .animate()
-            .flip(
-                duration: const Duration(seconds: 2),
-                delay: const Duration(seconds: 4))
-            .shimmer(duration: const Duration(seconds: 2), color: Colors.white),
+            .flip()
+            .shimmer(duration: const Duration(seconds: 4), color: Colors.white),
       ),
     ),
     const SizedBox(width: 3),
@@ -33,10 +31,8 @@ Widget devInfo(BuildContext context) {
           ),
         )
             .animate()
-            .flip(
-                duration: const Duration(seconds: 2),
-                delay: const Duration(seconds: 4))
-            .shimmer(duration: const Duration(seconds: 2), color: Colors.white),
+            .flip()
+            .shimmer(duration: const Duration(seconds: 4), color: Colors.white),
       ),
     ),
     const SizedBox(width: 3),
@@ -48,13 +44,8 @@ Widget devInfo(BuildContext context) {
           child: const CircleAvatar(
             radius: 20,
             backgroundImage: AssetImage('lib/assets/images/fb.png'),
-          )
-              .animate()
-              .flip(
-                  duration: const Duration(seconds: 2),
-                  delay: const Duration(seconds: 4))
-              .shimmer(
-                  duration: const Duration(seconds: 2), color: Colors.white),
+          ).animate().flip().shimmer(
+              duration: const Duration(seconds: 4), color: Colors.white),
         ),
       ),
     )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_chatiy/widgets/custom_drawer.dart';
+import 'package:my_chatiy/widgets/utils.dart';
 
 class ChatWithBot extends StatelessWidget {
   const ChatWithBot({super.key});
@@ -8,23 +9,10 @@ class ChatWithBot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xff171717),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: const Text(
-          'MYChatiy 👋',
-          style:
-              TextStyle(fontSize: 25, color: Colors.pinkAccent, letterSpacing: 1.2),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () => Get.back(),
-              icon:
-                  const Icon(Icons.home_filled, color: Colors.white, size: 23))
-        ],
+      backgroundColor:Colors.black, //const Color(0xff171717),
+      appBar: CustomAppBar().myChatiyAppBar(
+        IconButton(onPressed: ()=> Get.back(), icon:const Icon(Icons.keyboard_arrow_left_sharp, color: Colors.white,size:36,))
       ),
-      drawer: customDrawer(context),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15,horizontal:6),
         margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),

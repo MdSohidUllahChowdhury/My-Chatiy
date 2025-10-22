@@ -1,4 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:my_chatiy/widgets/custom_drawer.dart';
+import 'package:my_chatiy/widgets/utils.dart';
 
 class SearchByImage extends StatefulWidget {
   const SearchByImage({super.key});
@@ -7,75 +12,93 @@ class SearchByImage extends StatefulWidget {
   State<SearchByImage> createState() => _SearchByImageState();
 }
 
-final TextEditingController teamRankControler = TextEditingController();
-final TextEditingController teamNameControler = TextEditingController();
-pickImageFromGallery() {}
-
 class _SearchByImageState extends State<SearchByImage> {
+  File? _image;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImageFromGallery() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    const accent = Color(0xFFC6F432);
+
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 60),
-        child: Column(
-          children: [
-            const SizedBox(
-                height: 40,
-                child: Text(
-                  'FireBase DataBase',
+      backgroundColor: Colors.black,
+      appBar: CustomAppBar().myChatiyAppBar(
+        IconButton(onPressed: ()=> Get.back(), icon:const Icon(Icons.keyboard_arrow_left_sharp, color: Colors.white,size:36,))
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              GestureDetector(
+                onTap: _pickImageFromGallery,
+                child: Container(
+                  height: 300,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.05),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: _image == null
+                      ? const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.cloud_upload_outlined,
+                                color: Colors.white70, size: 80),
+                            SizedBox(height: 16),
+                            Text('Tap to upload an image',
+                                style: TextStyle(
+                                    color: Colors.white70, fontSize: 16)),
+                          ],
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(18),
+                          child: Image.file(
+                            _image!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                ),
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton.icon(
+                onPressed: _image != null
+                    ? () {
+                        //  Implement image submission logic
+                      }
+                    : null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: accent,
+                  disabledBackgroundColor: Colors.grey.shade800,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                icon: const Icon(Icons.search, color: Colors.black,size: 23,),
+                label: const Text(
+                  'Search with Image',
                   style: TextStyle(
-                      fontSize: 24,
-                      wordSpacing: 1.5,
-                      letterSpacing: 1.4,
-                      fontWeight: FontWeight.bold),
-                )),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.all(14),
-                height: MediaQuery.of(context).size.height * 0.36,
-                width: MediaQuery.of(context).size.width * 0.88,
-                decoration: BoxDecoration(
-                    color: const Color(0xffFEC4DD),
-                    border: Border.all(
-                        color: Colors.black,
-                        style: BorderStyle.solid,
-                        width: 2),
-                    borderRadius: const BorderRadius.all(Radius.circular(26))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.blueGrey,
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add,
-                            size: 35,
-                            color: Colors.white,
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    const Text('Select Image from Your Gallery'),
-                  ],
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.6),
                 ),
               ),
-            ),
-            const SizedBox(height: 12),
-            SizedBox(
-              height: 50,
-              width: 120,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Colors.yellowAccent),
-                ),
-                child: const Text('Submit'),
-              ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

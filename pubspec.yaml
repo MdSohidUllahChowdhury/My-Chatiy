@@ -1,41 +1,54 @@
 name: my_chatiy
-description: "A new Flutter project."
-
-publish_to: "none"
+description: A minimalist and responsive chat application built with Flutter, featuring Firebase integration for real-time communication.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
+# SDK constraints
 environment:
-  sdk: ^3.5.3
+  sdk: '>=3.5.3 <4.0.0'
 
+# Application dependencies
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.8
-  get: ^4.6.6
-  flutter_animate: ^4.5.0
-  flutter_screenutil: ^5.9.3
-  fluttertoast: ^8.2.8
-  url_launcher: ^6.3.1
-  firebase_core: ^3.7.0
-  firebase_core_web: ^2.18.1
-  firebase_auth: ^5.3.3
-  cloud_firestore: ^5.5.0
-  firebase_storage: ^12.4.10
-  random_string: ^2.3.1
+  # UI & UX
+  cupertino_icons: ^1.0.8 # iOS style icons
+  flutter_animate: ^4.5.0 # For beautiful animations
+  flutter_screenutil: ^5.9.3 # For responsive UI
+  dotted_border: ^3.1.0 # For creating dotted borders
+  fluttertoast: ^8.2.8 # For showing toast messages
 
+  # State Management
+  get: ^4.6.6 # For state management, dependency injection and route management
+
+  # Firebase
+  firebase_core: ^3.7.0 # Required for all Firebase plugins
+  firebase_auth: ^5.3.3 # For authentication
+  cloud_firestore: ^5.5.0 # For cloud database
+  firebase_storage: ^12.4.10 # For cloud storage
+  firebase_core_web: ^2.18.1 # Required for Firebase on web
+
+  # Image & URL
+  image_picker: ^1.2.0 # For picking images from gallery or camera
+  url_launcher: ^6.3.1 # For launching URLs
+
+# Development dependencies
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^4.0.0 # For static analysis
 
-  flutter_lints: ^4.0.0
-
+# Flutter specific configurations
 flutter:
   uses-material-design: true
 
+  # Assets
   assets:
     - lib/assets/images/
+    - lib/assets/fonts/
 
+  # Fonts
   fonts:
     - family: Lato
       fonts:

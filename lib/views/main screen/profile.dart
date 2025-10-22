@@ -26,7 +26,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
         elevation: 0,
       ),
       backgroundColor: Colors.black,
-      body: Builder(builder: (context) {
+      body: Builder(
+        builder: (context) {
         final uid = FirebaseAuth.instance.currentUser?.uid;
         if (uid == null) {
           return const Center(
@@ -60,7 +61,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 760),
                 child: Padding(
-                  padding: const EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(6.0),
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
@@ -68,19 +69,13 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                      borderRadius: BorderRadius.circular(14),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black45,
-                          blurRadius: 18,
-                          offset: Offset(0, 10),
-                        )
-                      ],
-                      border: Border.all(color: accent.withOpacity(0.08)),
+                      borderRadius: BorderRadius.circular(16),
+                      
+                      border: Border.all(color: accent.withOpacity(0.1)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 22.0, vertical: 40.0),
+                          horizontal: 22.0, vertical: 20.0),
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -136,7 +131,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
 
                             const SizedBox(height: 18),
 
-                            Divider(color: Colors.white.withOpacity(0.12)),
+                            Divider(color: Colors.white.withOpacity(0.2)),
                             const SizedBox(height: 16),
 
                             // info tiles

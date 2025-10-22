@@ -23,10 +23,10 @@ class _SplashScreenState extends State<SplashScreen> {
     final auth = FirebaseAuth.instance;
     final user = auth.currentUser;
     if(user!=null){
-     await Future.delayed(const Duration(seconds: 4), () {});
+     await Future.delayed(const Duration(seconds: 3), () {});
     Get.to(() => const BotScreen());
     }else{
-     await Future.delayed(const Duration(seconds: 4), () {});
+     await Future.delayed(const Duration(seconds: 3), () {});
     Get.to(() => const WelcomeScreen());
     }
      

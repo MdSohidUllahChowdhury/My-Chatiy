@@ -24,13 +24,9 @@ class SingUp extends StatelessWidget {
         "Last Name": lastName.text,
         "Email": emailController.text,
       };
-      //String id = randomAlphaNumeric(10);
       final User? user = FirebaseAuth.instance.currentUser;
       await CallDataBase().singUpUserInfo(userDetails, user!.uid);
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Successfully Signed Up")),
-      );
+      TostMessage().rightMessage("Successfully Signed Up");
     }
 
     return Scaffold(
@@ -97,17 +93,15 @@ class SingUp extends StatelessWidget {
                                 await auth.createUserWithEmailAndPassword(
                                     email: emailController.text.trim(),
                                     password: passwordController.text.trim());
-                                // save additional user info to Firestore
                                 await userInfoToDataBase();
-                                // navigate to login screen
                                 Get.offAll(() => const LogIn());
                               } catch (error) {
-                                TostMessage().errorMessage(error.toString());
+                                TostMessage().wrongMessage(error.toString());
                               }
                             }
                           },
                           style: TextButton.styleFrom(
-                              minimumSize: const Size(260, 50),
+                              minimumSize: const Size(350, 55),
                               backgroundColor: Colors.orangeAccent.shade400),
                           child: const Text('Confirm',
                               style: TextStyle(

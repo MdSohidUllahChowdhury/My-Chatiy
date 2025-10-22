@@ -68,17 +68,17 @@ class LogIn extends StatelessWidget {
                           await auth.signInWithEmailAndPassword(
                             email: email.text.trim(), 
                             password: password.text.trim()).then((onValue){
-                              TostMessage().errorMessage(onValue.user!.email.toString());
+                              TostMessage().rightMessage("Login Successful");
                             });
                           Get.offAll(() => const BotScreen());
                           }catch(error){
-                            TostMessage().errorMessage(error.toString());
+                            TostMessage().wrongMessage(error.toString());
                           }
                         }
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.blueAccent.shade400,
-                        minimumSize: const Size(260, 50),
+                        minimumSize: const Size(350, 55),
                       ),
                       child: const Text("LogIn",
                           style: TextStyle(

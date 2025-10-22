@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:my_chatiy/views/main%20screen/profile.dart';
 import 'package:my_chatiy/widgets/dev_info.dart';
 import 'package:my_chatiy/widgets/three_card.dart';
 import 'package:my_chatiy/widgets/custom_drawer.dart';
+import 'package:my_chatiy/widgets/utils.dart';
 
 class BotScreen extends StatelessWidget {
   const BotScreen({super.key});
@@ -12,44 +11,16 @@ class BotScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.white,
-              size: 24,
-            ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+      appBar: CustomAppBar().myChatiyAppBar(Builder(
+        builder: (context) => IconButton(
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: 24,
           ),
+          onPressed: () => Scaffold.of(context).openDrawer(),
         ),
-        title: const Text(
-          'MYChatiy 👋',
-          style: TextStyle(
-              fontSize: 25, color: Colors.pinkAccent, letterSpacing: 1.2),
-        ),
-        actions: [
-        
-          CircleAvatar(
-            backgroundColor: Colors.blueAccent,
-            radius: 17,
-            child: IconButton(
-                onPressed: () {
-                  Get.to(() => const UserInfoScreen());
-                },
-                icon: const Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 17,
-                )),
-          ),
-          const SizedBox(
-            width: 6,
-          )
-        ],
-      ),
+      ),),
       drawer: customDrawer(context),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 20),
